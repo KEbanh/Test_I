@@ -1,0 +1,64 @@
+ 
+<html>
+	<head>
+		<title></title>
+			</head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script>
+		
+		function fWertetabelle(){
+			
+		var vAnzahl;
+		var vTeiler;
+		var vQuersumme;
+		var vX=1;
+		var vY;
+		var vAusgabe="";
+			
+		vAnzahl = document.getElementById("idAnzahl").value;
+		vTeiler = document.getElementById("idTeiler").value;	
+			
+		vAusgabe=vAusgabe +"<table border=1>";
+		vAusgabe=vAusgabe +"<tr><th>x</th><th>f(x)=x<sup>4</sup>+ 2x +7</th><th>Quersumme</th></tr>";
+			
+        while(vX<=vAnzahl){
+		
+		// Formel zur Berechnung von f(x) oder Y
+			vY= (vX*vX*vX*vX) + (2*vX) + 7
+		
+		// Berechne die Quersumme 
+			vQuersumme = vX +vY
+			
+		// Prüfung ob die Quersumme teilbar ist oder nicht!	
+			if(vQuersumme%vTeiler==0){
+			
+		// Ausgabe wenn die teilbar, dann markiere die Spalte Quersumme: gelb	
+			vAusgabe=vAusgabe + "<tr><td>" + vX + "</td><td>" + vY + "</td><td style=background-color:yellow>" + vQuersumme + "</td></tr>";   
+		}
+			
+		else{
+		// Ansonsten einfach Ausgabe 
+			vAusgabe=vAusgabe + "<tr><td>" + vX + "</td><td>" + vY + "</td><td>" + vQuersumme + "</td></tr>" ;  	
+	
+	}	
+			
+		// Inkrement zählt hoch, damit die Schleife endet
+			vX=vX+1;	
+		}
+		
+		vAusgabe=vAusgabe +"</table>";
+		document.getElementById("idAusgabe").innerHTML = vAusgabe;	
+	
+	}
+		</script>
+
+
+	<body>
+		<h2>Mathematische Funktion (Wertetabelle) </h2>
+		<h3>f(x)=x<sup>4</sup>+ 2x +7</h3>
+        x läuft von 1 bis <input id="idAnzahl" type="text" value="5"></br></br>
+		Wert von f(x) teilbar durch:<input id="idTeiler" type="text" size = "5" value="">
+		<button onClick="fWertetabelle();">Wertetabelle erzeugen!</button><br /><br />
+        <div id="idAusgabe">Button klicken!</div>
+	</body>
+</html>
